@@ -56,7 +56,7 @@ public class PrefabSpawner : MonoBehaviour {
 
 		print (posIndex);
 		spawnedScrumHalf = Instantiate (prfb_scrumHalf, ScrumHalfPositions [posIndex], Quaternion.identity) as GameObject ;
-		//print ("Spawned Prefab");
+		print ("Spawned ScrumHalf Prefab");
 		//Instantiate (prfb_Player, PlayerPositions [0], Quaternion.identity);
 		if (onScrumhalfSpawned != null) {
 			onScrumhalfSpawned ();
