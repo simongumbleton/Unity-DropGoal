@@ -56,7 +56,7 @@ public class PrefabSpawner : MonoBehaviour {
 
 		print (posIndex);
 		spawnedScrumHalf = Instantiate (prfb_scrumHalf, ScrumHalfPositions [posIndex], Quaternion.identity) as GameObject ;
-		print ("Spawned ScrumHalf Prefab");
+		print ("Spawned ScrumHalf");
 		//Instantiate (prfb_Player, PlayerPositions [0], Quaternion.identity);
 		if (onScrumhalfSpawned != null) {
 			onScrumhalfSpawned ();
@@ -68,7 +68,7 @@ public class PrefabSpawner : MonoBehaviour {
 	void DestroyPrefabs()
 	{
 		Destroy (spawnedScrumHalf);
-		print ("Destroyed ScrumHalf Prefab");
+		print ("Destroyed ScrumHalf");
 
 		if (catchScript.ballCaught) {
 			Destroy(catchScript.ball);
