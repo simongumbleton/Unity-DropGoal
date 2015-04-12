@@ -68,7 +68,7 @@ public class PrefabSpawner : MonoBehaviour {
 	void DestroyPrefabs()
 	{
 		Destroy (spawnedScrumHalf);
-		print ("Destroyed ScrumHalf Prefab");
+		//print ("Destroyed Object");
 
 		if (catchScript.ballCaught) {
 			Destroy(catchScript.ball);
