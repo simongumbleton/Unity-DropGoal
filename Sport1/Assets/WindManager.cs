@@ -8,6 +8,8 @@ public class WindManager : MonoBehaviour {
 
 	public GameObject windArrow;
 	public GameObject windArrowMesh;
+	public GameObject UI_WindArrow;
+
 	private Vector3 relativeArrowDirection;
 
 
@@ -48,6 +50,9 @@ public class WindManager : MonoBehaviour {
 
 		print ("Arrow direction " + relativeArrowDirection);
 
+		float windDirectionAngle = Vector3.Angle (windArrow.transform.position,relativeArrowDirection);
+		print ("Wind Angle is " + windDirectionAngle);
+
 		MeshRenderer arrowRenderer = windArrowMesh.GetComponent<MeshRenderer>();
 		Color arrowColor = arrowRenderer.material.color;
 		arrowColor.a = windStrength /  MaxWindStrength;
@@ -60,6 +65,10 @@ public class WindManager : MonoBehaviour {
 		//relativeArrowDirection = new Vector3 (relativeArrowDirection.x, windArrow.transform.position.y, relativeArrowDirection.z);
 
 		windArrow.transform.LookAt (relativeArrowDirection);
+		Vector3 test = windArrow.transform.eulerAngles;
+		print (test);
+		UI_WindArrow.transform.eulerAngles = new Vector3 (0,180,windArrow.transform.eulerAngles.y);
+
 
 
 	}
