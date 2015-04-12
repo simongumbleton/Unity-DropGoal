@@ -20,6 +20,7 @@ public class KickZone : MonoBehaviour {
 	public bool CatchEffectsDirection;
 	public bool useSquare;
 
+
 	private Rigidbody ballRB;
 	public Vector3 kickVector;
 	public float kickPower;
@@ -79,6 +80,7 @@ public class KickZone : MonoBehaviour {
 		if (kickPointObject != null) {
 			kickPoint = GameObject.FindWithTag(kickPointObject);
 		}
+
 	}
 
 	void KickBall(){
@@ -149,6 +151,7 @@ public class KickZone : MonoBehaviour {
 			onBallKicked ();
 		}
 
+
 		//Invoke ("StartKickedBallDestruction(ballRB.tag)", kickedBallLifeTime);
 		//StartCoroutine(StartKickedBallDestruction("KickedBall",kickedBallLifeTime));
 
@@ -181,6 +184,11 @@ public class KickZone : MonoBehaviour {
 		//transform.localRotation = q_Rotation;
 		q_Rotation.eulerAngles = new Vector3 (0, playerCam.transform.eulerAngles.y, 0);
 		transform.rotation = q_Rotation;
+
+
+
+
+
 	
 	}
 }

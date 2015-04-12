@@ -451,6 +451,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &474166764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100006, guid: 6f1c602f7ccd348b9a8492e0a8a1d22e, type: 3}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 474166765}
+  - 33: {fileID: 474166767}
+  - 23: {fileID: 474166766}
+  m_Layer: 0
+  m_Name: ArrowMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &474166765
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400006, guid: 6f1c602f7ccd348b9a8492e0a8a1d22e, type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 474166764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1596954008}
+  m_RootOrder: 0
+--- !u!23 &474166766
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: 6f1c602f7ccd348b9a8492e0a8a1d22e,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 474166764}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: ab3b86e1ff2074c558e63cd4ca0e8dd3, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &474166767
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: 6f1c602f7ccd348b9a8492e0a8a1d22e,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 474166764}
+  m_Mesh: {fileID: 4300000, guid: 6f1c602f7ccd348b9a8492e0a8a1d22e, type: 3}
 --- !u!1 &598229363
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,9 +708,9 @@ MonoBehaviour:
   ballObject: KickBall
   kickPointObject: KickContactPoint
   kickedBallLifeTime: 5
-  CatchEffectsPower: 1
-  CatchEffectsDirection: 1
-  useSquare: 1
+  CatchEffectsPower: 0
+  CatchEffectsDirection: 0
+  useSquare: 0
   kickVector: {x: 0, y: 0, z: 0}
   kickPower: 800
   kickHeight: .300000012
@@ -668,6 +730,67 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: .200000003, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &760782803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 760782805}
+  - 65: {fileID: 760782804}
+  - 114: {fileID: 760782806}
+  m_Layer: 0
+  m_Name: WindZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &760782804
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 760782803}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 70, y: 40, z: 120}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &760782805
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 760782803}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12, y: 22.7000008, z: -24.7000008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1596954008}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+--- !u!114 &760782806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 760782803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827ae19c7bec1430bb2b098a0883228d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kickedBallTag: KickedBall
+  windArrow: {fileID: 1596954007}
+  windArrowMesh: {fileID: 474166764}
+  enableWind: 1
+  windDirection: {x: 0, y: 0, z: 0}
+  windStrength: 0
+  MaxWindStrength: 3
+  windEffectedObjects: []
 --- !u!1 &854659673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1148,34 @@ RectTransform:
   m_AnchoredPosition: {x: 1.52587872e-05, y: -0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &1596954007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1596954008}
+  m_Layer: 0
+  m_Name: Arrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1596954008
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1596954007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .800000012, y: -21.6900005, z: 24.0599995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 474166765}
+  m_Father: {fileID: 760782805}
+  m_RootOrder: 0
 --- !u!1001 &1629124948
 Prefab:
   m_ObjectHideFlags: 0
