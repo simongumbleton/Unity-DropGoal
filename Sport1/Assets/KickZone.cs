@@ -160,10 +160,10 @@ public class KickZone : MonoBehaviour {
 	IEnumerator StartKickedBallDestruction(string kickedBallTag, float lifeTime)
 	{
 		GameObject destructableBall = GameObject.FindWithTag(kickedBallTag);
-		print ("Waiting for .." + lifeTime + " seconds");
+		//print ("Waiting for .." + lifeTime + " seconds");
 		yield return new WaitForSeconds(lifeTime);
 		Destroy (destructableBall);
-		print ("Destroyed Kickball");
+		//print ("Destroyed Kickball");
 	}
 
 

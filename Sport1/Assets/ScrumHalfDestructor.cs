@@ -14,11 +14,11 @@ public class ScrumHalfDestructor : MonoBehaviour {
 	}
 
 	void OnEnable() {
-		print("OnEnable this scrum half");
+		//print("OnEnable this scrum half");
 	}
 
 	void OnDestroy()
 	{
-		print ("OnDestroy this scrum half");
+		//print ("OnDestroy this scrum half");
 	}
 }

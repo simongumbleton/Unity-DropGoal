@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class WindManager : MonoBehaviour {
 
 	public string kickedBallTag = "KickedBall";
 
 	public GameObject windArrow;
-	public GameObject windArrowMesh;
+	public GameObject UI_windSpeedText;
 	public GameObject UI_WindArrow;
 
 	private Vector3 relativeArrowDirection;
@@ -42,33 +43,26 @@ public class WindManager : MonoBehaviour {
 
 		windDirection = new Vector3 ((Random.Range(-1.5f,1.5f)),0.0f,(Random.Range(-1.0f,1.0f)));
 
-		print ("Wind direction " + windDirection);
+		//print ("Wind direction " + windDirection);
 
 		relativeWindDirection = transform.InverseTransformDirection(windDirection);
 
 		relativeArrowDirection = windArrow.transform.position + windDirection;
 
-		print ("Arrow direction " + relativeArrowDirection);
+		//print ("Arrow direction " + relativeArrowDirection);
 
 		float windDirectionAngle = Vector3.Angle (windArrow.transform.position,relativeArrowDirection);
-		print ("Wind Angle is " + windDirectionAngle);
-
-		MeshRenderer arrowRenderer = windArrowMesh.GetComponent<MeshRenderer>();
-		Color arrowColor = arrowRenderer.material.color;
-		arrowColor.a = windStrength /  MaxWindStrength;
-		if (arrowColor.a < 0.1f) {
-			arrowColor.a = 0.1f;
-		}
-
-		arrowRenderer.material.color = arrowColor;
+		//print ("Wind Angle is " + windDirectionAngle);
 
 		//relativeArrowDirection = new Vector3 (relativeArrowDirection.x, windArrow.transform.position.y, relativeArrowDirection.z);
 
 		windArrow.transform.LookAt (relativeArrowDirection);
 		Vector3 test = windArrow.transform.eulerAngles;
-		print (test);
+		//print (test);
 		UI_WindArrow.transform.eulerAngles = new Vector3 (0,180,windArrow.transform.eulerAngles.y);
 
+		Text ui_windSpeedText = UI_windSpeedText.GetComponent<Text>();
+		ui_windSpeedText.text = ("Wind Speed: " + windStrength);
 
 
 	}

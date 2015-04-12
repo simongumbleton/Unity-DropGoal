@@ -19,6 +19,6 @@ public class KickBallDestructor : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(lifeTime);
 		Destroy (gameObject);
-		print ("Destroyed Kicked ball");
+		//print ("Destroyed Kicked ball");
 	}
 }
