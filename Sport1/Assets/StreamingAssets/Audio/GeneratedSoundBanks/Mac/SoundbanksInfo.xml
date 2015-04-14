@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Mac" SchemaVersion="10" SoundbankVersion="112">
+	<RootPaths>
+		<ProjectRoot>/Users/simongumbleton/Library/Application Support/Wwise/Bottles/wwise/dosdevices/y:/Projects/Unity/Games/Unity-DropGoal/Sport1/WwiseProject/Unity_DropGoal/</ProjectRoot>
+		<SourceFilesRoot>/Users/simongumbleton/Library/Application Support/Wwise/Bottles/wwise/dosdevices/y:/Projects/Unity/Games/Unity-DropGoal/Sport1/WwiseProject/Unity_DropGoal/.cache/Mac/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/simongumbleton/Library/Application Support/Wwise/Bottles/wwise/dosdevices/y:/Projects/Unity/Games/Unity-DropGoal/Sport1/Assets/StreamingAssets/Audio/GeneratedSoundBanks/Mac/</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>/Users/simongumbleton/Library/Application Support/Wwise/Bottles/wwise/dosdevices/y:/Projects/Unity/Games/Unity-DropGoal/Sport1/WwiseProject/Unity_DropGoal/GeneratedSoundBanks/Mac</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="3161908922" Language="SFX">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3157003241" Name="Test" MaxAttenuation="0.000000"/>
+			</IncludedEvents>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>
