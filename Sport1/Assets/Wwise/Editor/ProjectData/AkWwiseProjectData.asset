@@ -60,6 +60,8 @@ MonoBehaviour:
   - /Unity_DropGoal
   - /Unity_DropGoal/Events
   - /Unity_DropGoal/Events/Default Work Unit
+  - /Unity_DropGoal/SoundBanks
+  - /Unity_DropGoal/SoundBanks/Default Work Unit
   m_lastPopulateTimePsrt1: 1591339578
   m_lastPopulateTimePart2: -1999485691
   autoPopulateEnabled: 1

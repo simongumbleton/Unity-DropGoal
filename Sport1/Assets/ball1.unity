@@ -523,6 +523,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 378397009}
   - 114: {fileID: 378397008}
+  - 114: {fileID: 378397011}
+  - 114: {fileID: 378397010}
   m_Layer: 0
   m_Name: PrefabSpawner
   m_TagString: Untagged
@@ -561,6 +563,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &378397010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 378397007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4eb96f7ace648e7be2f147c5ef5764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: c2c9ed365fbfb14a9127ccac488cbf42
+  eventID: -1137964055
+  soundEmitterObject: {fileID: 0}
+  enableActionOnEvent: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  transitionDuration: 0
+  m_callbackData: {fileID: 0}
+  multiPositionTypeLabel: 0
+  multiPositionArray: []
+--- !u!114 &378397011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 378397007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5aac97a98dfc45868ca1cccdb83caa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_posOffsetData: {fileID: 0}
+  isEnvironmentAware: 0
+  isStaticObject: 0
 --- !u!1 &387053891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1101,7 @@ MonoBehaviour:
   CatchEffectsDirection: 1
   useSquare: 1
   kickVector: {x: 0, y: 0, z: 0}
-  kickPower: 850
+  kickPower: 800
   kickHeight: .300000012
   catchBallObject: CatchZone
   kickPowerModifierAmount: .224999994
@@ -1354,6 +1393,51 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f405dc172f3a4fb89b2d814b9f7fef3, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1215461929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1215461931}
+  - 114: {fileID: 1215461930}
+  m_Layer: 0
+  m_Name: BankLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1215461930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1215461929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e92724bdc027462482afe1e98a6d627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 717399acbdeea148bdf347e40ad37197
+  bankName: Main
+  loadAsynchronous: 0
+  unloadTriggerList: 958ca0ea
+--- !u!4 &1215461931
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1215461929}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.36999989, y: 1.11000001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!1 &1428124587
 GameObject:
   m_ObjectHideFlags: 0
