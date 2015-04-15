@@ -4,7 +4,7 @@ using System.Collections;
 public class PrefabSpawner : MonoBehaviour {
 
 	public GameObject prfb_scrumHalf;	//The scrumhalf prefab to spawn
-	public Vector3[] ScrumHalfPositions = new Vector3[4]; // Array of positions for scrumHalf to spawn at
+//	public Vector3[] ScrumHalfPositions;	// = new Vector3[4]; // Array of positions for scrumHalf to spawn at
 	
 	private GameObject spawnedScrumHalf;	// A ref to hold the spawned instance of scrumHalf
 	
@@ -40,10 +40,11 @@ public class PrefabSpawner : MonoBehaviour {
 		GameObject spawnPointCollection = GameObject.FindWithTag("SpawnPoints");
 		ScrumHalfPositionPoints = spawnPointCollection.GetComponentsInChildren<Transform>();
 		print (ScrumHalfPositionPoints.Length);
+		//ScrumHalfPositions.Length = ScrumHalfPositionPoints.Length - 1;
 		for (int i=1; i < ScrumHalfPositionPoints.Length; i++)	// start i at 1 because the spawn collection includes the parent
 		{
-			//print (ScrumHalfPositionPoints[i].name);
-			ScrumHalfPositions[i-1] = ScrumHalfPositionPoints[i].transform.position;
+			print (ScrumHalfPositionPoints[i].name);
+			//ScrumHalfPositions[i-1] = ScrumHalfPositionPoints[i].transform.position;
 		}
 
 
@@ -68,18 +69,18 @@ public class PrefabSpawner : MonoBehaviour {
 
 	void SpawnPrefabs(){
 
-		int posIndex = Random.Range (0,ScrumHalfPositions.Length);
+		int posIndex = Random.Range (1,ScrumHalfPositionPoints.Length -1);
 
 		if (posIndex == lastPosIndex)
-			if (posIndex == ScrumHalfPositions.Length - 1)
-				posIndex = 0;
+			if (posIndex == ScrumHalfPositionPoints.Length - 1)
+				posIndex = 1;
 			else
 				posIndex += 1;
 
 		lastPosIndex = posIndex;
 
 
-		spawnedScrumHalf = Instantiate (prfb_scrumHalf, ScrumHalfPositions [posIndex], Quaternion.identity) as GameObject ;
+		spawnedScrumHalf = Instantiate (prfb_scrumHalf, ScrumHalfPositionPoints[posIndex].transform.position, Quaternion.identity) as GameObject ;
 
 		if (onScrumhalfSpawned != null) {
 			onScrumhalfSpawned ();
