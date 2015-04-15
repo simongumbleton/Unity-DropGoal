@@ -13,6 +13,7 @@ TagManager:
   - ScrumHalf
   - KickBall
   - KickedBall
+  - SpawnPoints
   layers:
   - Default
   - TransparentFX

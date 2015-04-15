@@ -3,8 +3,17 @@ using System.Collections;
 
 public class ScrumHalfDestructor : MonoBehaviour {
 
+
+	public delegate void ScrumHalf_Awake();
+	public static event ScrumHalf_Awake onScrumHalf_Awake;
+
+
 	// Use this for initialization
 	void Start () {
+
+		if (onScrumHalf_Awake != null) {
+			onScrumHalf_Awake ();
+		}
 	
 	}
 	
