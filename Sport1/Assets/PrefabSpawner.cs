@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PrefabSpawner : MonoBehaviour {
 
@@ -25,6 +26,11 @@ public class PrefabSpawner : MonoBehaviour {
 
 	private bool canDestroy = true;
 
+	public GameObject timerUI;
+	public float timer = 0.0f;
+	private bool SnapTimer = false;
+	private Text timerText;
+
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +42,7 @@ public class PrefabSpawner : MonoBehaviour {
 		CatchBall_Test.onBallCaught += OnBallCaught;
 		KickZone.onBallKicked += OnBallKicked;
 		ScrumHalfDestructor.onScrumHalf_Awake += HandleonScrumHalf_Awake;
+		ThrowBall_Test.onBallThrown += HandleonBallThrown;
 
 		GameObject spawnPointCollection = GameObject.FindWithTag("SpawnPoints");
 		ScrumHalfPositionPoints = spawnPointCollection.GetComponentsInChildren<Transform>();
@@ -46,7 +53,14 @@ public class PrefabSpawner : MonoBehaviour {
 			print (ScrumHalfPositionPoints[i].name);
 			//ScrumHalfPositions[i-1] = ScrumHalfPositionPoints[i].transform.position;
 		}
+		timerText = timerUI.GetComponent<Text>();
+		timerText.text = "";
 
+	}
+
+	void HandleonBallThrown ()
+	{
+		SnapTimer = true;
 
 	}
 
@@ -63,6 +77,9 @@ public class PrefabSpawner : MonoBehaviour {
 	void OnBallKicked(){
 
 		canDestroy = true;
+		SnapTimer = false;
+		timer = 0.0f;
+		//timerText.text = "";
 	}
 
 
@@ -85,6 +102,10 @@ public class PrefabSpawner : MonoBehaviour {
 		if (onScrumhalfSpawned != null) {
 			onScrumhalfSpawned ();
 		}
+
+		SnapTimer = false;
+		timer = 0.0f;
+		timerText.text = "";
 
 	}
 
@@ -113,6 +134,9 @@ public class PrefabSpawner : MonoBehaviour {
 
 			}
 		}
-	
+		if (SnapTimer) {
+			timer += Time.deltaTime;
+			timerText.text = timer.ToString();
+		}
 	}
 }
