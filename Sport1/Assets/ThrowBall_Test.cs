@@ -42,6 +42,7 @@ public class ThrowBall_Test : MonoBehaviour {
 
 		CatchBall_Test.onBallCaught += BallCaught;
 		rb = this.gameObject.GetComponent<Rigidbody>();
+
 		hasCaught = false;
 		thrown = false;
 		timer = 0.0f;
@@ -64,6 +65,7 @@ public class ThrowBall_Test : MonoBehaviour {
 		rb.WakeUp ();
 		//rb.AddForce(playerPosition * thrust, ForceMode.Acceleration);
 		thrown = true;
+		rb.maxAngularVelocity = 15;
 
 
 		/////////////

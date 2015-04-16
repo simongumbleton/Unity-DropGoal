@@ -936,7 +936,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 598229363}
   m_LocalRotation: {x: 0, y: .160846561, z: 0, w: .986979485}
-  m_LocalPosition: {x: 0, y: 0, z: 1.60000217}
+  m_LocalPosition: {x: 0, y: 0, z: 7.0999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 659399448}
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   CatchEffectsDirection: 1
   useSquare: 1
   kickVector: {x: 0, y: 0, z: 0}
-  kickPower: 750
+  kickPower: 800
   kickHeight: .300000012
   catchBallObject: CatchZone
   kickPowerModifierAmount: .300000012
@@ -1226,7 +1226,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: .200000003, z: 6}
+  m_Size: {x: 4, y: .400000006, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &760782803
 GameObject:
@@ -1666,7 +1666,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   ballObject: RugbyBall
   prfb_kickBall: {fileID: 140098, guid: 674a4a7860cdb49b4a45be641df40741, type: 2}
-  debugCatch: 0
+  debugCatch: 1
   ballCaught: 0
   handsObject: CatchZone
   CatchRoation: {x: 0, y: 90, z: 105}
@@ -1887,7 +1887,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1741713012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 7.21000004}
+  m_LocalPosition: {x: -2.5, y: 1, z: 11.6000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1629727946}

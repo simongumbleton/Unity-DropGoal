@@ -106,9 +106,9 @@ Rigidbody:
   m_AngularDrag: .0500000007
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &11477488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c524df6e9ced9421988086c190204d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 5
+  lifeTime: 10
+  rotationSpeed: 1
 --- !u!136 &13646618
 CapsuleCollider:
   m_ObjectHideFlags: 1
