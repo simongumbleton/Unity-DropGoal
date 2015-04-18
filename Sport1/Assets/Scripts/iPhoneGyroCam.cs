@@ -15,9 +15,17 @@ public class iPhoneGyroCam : MonoBehaviour {
 	public float smoothRate;
 	GameObject camParent;
 	DeviceOrientation orientation;
+
+	private Quaternion StartingGyroRotation;
+
+	private Quaternion StartingRotation;
+
+	Quaternion offsetGyroRot;
 	
 	void Start() {
-		
+
+		StartingRotation = transform.rotation;
+
 		Transform originalParent = transform.parent; // check if this transform has a parent
 		camParent = new GameObject ("camParent"); // make a new parent
 		camParent.transform.position = transform.position; // move the new parent to this transform position
@@ -35,6 +43,8 @@ public class iPhoneGyroCam : MonoBehaviour {
 			print (orientation);
 			gyro = Input.gyro;
 			gyro.enabled = true;
+
+
 			
 //			if ((Screen.orientation == ScreenOrientation.LandscapeLeft)||(Screen.orientation == ScreenOrientation.LandscapeRight)) {
 //				camParent.transform.eulerAngles = new Vector3(90,90,0);
@@ -62,6 +72,10 @@ public class iPhoneGyroCam : MonoBehaviour {
 			}
 
 
+			StartingGyroRotation = gyro.attitude; //* rotFix;
+			print ("Normal quat = " + StartingGyroRotation);
+			print ("Inverse quat = " + Quaternion.Inverse(StartingGyroRotation));
+
 		} else {
 			print("NO GYRO");
 		}
@@ -70,23 +84,40 @@ public class iPhoneGyroCam : MonoBehaviour {
 	void Update () {
 		if (gyroBool) {
 
-			//orientation = Input.deviceOrientation;
-			//print (orientation);
-
-
 			Quaternion camRot = gyro.attitude * rotFix;
-			//camRot = camRot * smoothRate;
-			//transform.localRotation = camRot;
+			//print ("Gyro with fix = " + camRot);
+			offsetGyroRot = StartingGyroRotation * camRot;
+			//print ("Inverse offset = " + offsetGyroRot);
+			//print ("Starting Gyro Rotation = " + StartingGyroRotation);
+			transform.localRotation = camRot;
+		
+			lastCamRot = offsetGyroRot;
+
+			//print(Quaternion.Dot(camRot, StartingGyroRotation));
+
+//
+//			Quaternion camRot = gyro.attitude * rotFix;
+//			
+//			transform.localRotation = Quaternion.Slerp(lastCamRot,camRot,smoothRate*Time.deltaTime);
+//			
+//			lastCamRot = camRot;
 
 
-			transform.localRotation = Quaternion.Slerp(lastCamRot,camRot,smoothRate*Time.deltaTime);
 
-			lastCamRot = camRot;
 		}
+
+		if (Input.GetKeyDown("c")){
+			RecalibrateGyroCam();
+		}
+
 	}
 
 	void OnDestroy(){
 		orientation = Input.deviceOrientation;
+	}
+
+	void RecalibrateGyroCam(){
+
 	}
 
 }
