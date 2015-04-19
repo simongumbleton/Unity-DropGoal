@@ -19,6 +19,9 @@ public class iPhoneGyroCam : MonoBehaviour {
 	private Quaternion StartingGyroRotation;
 
 	private Quaternion StartingRotation;
+	private Quaternion EndRotation;
+
+	public Quaternion camParentRotOffset;
 
 	Quaternion offsetGyroRot;
 	
@@ -60,7 +63,7 @@ public class iPhoneGyroCam : MonoBehaviour {
 			//Screen.sleepTimeout = 0;
 
 			if ((orientation == DeviceOrientation.LandscapeLeft)||(orientation == DeviceOrientation.LandscapeRight)) {
-				camParent.transform.eulerAngles = new Vector3(90,90,180);
+				camParent.transform.eulerAngles = new Vector3(90,270,0);
 			} else if (orientation == DeviceOrientation.Portrait) {
 				camParent.transform.eulerAngles = new Vector3(90,180,0);
 			}
@@ -117,6 +120,19 @@ public class iPhoneGyroCam : MonoBehaviour {
 	}
 
 	void RecalibrateGyroCam(){
+
+		// Need to figure out the difference between how much the player has rotated from the starting position and apply that tranformed rotation to the camparent
+		//camParent.transform.eulerAngles = new Vector3(0,0,0);
+
+		EndRotation = transform.rotation;
+		Quaternion inverseEndRotation = Quaternion.Inverse (EndRotation);
+		Quaternion camParentInitial = Quaternion.identity;
+		camParentInitial.eulerAngles = new Vector3 (90,270,0);
+		Quaternion calibratedCamParentRot = inverseEndRotation * camParentInitial;
+		camParent.transform.rotation = calibratedCamParentRot;
+
+
+
 
 	}
 
