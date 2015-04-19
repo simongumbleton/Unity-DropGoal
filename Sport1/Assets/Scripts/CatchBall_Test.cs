@@ -95,37 +95,65 @@ public class CatchBall_Test : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (scrumHalfAlive) {
 			if (canCatch) {
-				if ((debugCatch) & (!debugBallCaught)) {
-					if ((!ballCaught)&(ballThrown)) {
-						CatchBall ();
-						debugBallCaught = true;
-					} else
-				if (Input.GetMouseButtonDown (0)) {
-						if (!ballDropped)
-							DropBall ();
-					}
-				} else
-			if (Input.GetMouseButtonDown (0)) {
+				if (Input.GetMouseButton (0)) {
 					if ((!ballCaught)&(ballThrown)){
 						CatchBall ();
 					}
-					else if (!ballDropped) {
+				}
+				else
+					if (ballCaught){
 						DropBall ();
 					}
-				}
+
 			}
-			// gameObject.transform.parent = hands.transform;
+			
 		}
+
+
+//		if (Input.GetMouseButton (0)) {
+//			print ("Touching");
+//		}
+//		else {
+//			print ("Not Touching");
+//		}
+
+
+
+//		if (scrumHalfAlive) {
+//			if (canCatch) {
+//				if ((debugCatch) & (!debugBallCaught)) {
+//					if ((!ballCaught)&(ballThrown)) {
+//						CatchBall ();
+//						debugBallCaught = true;
+//					} else
+//				if (Input.GetMouseButtonDown (0)) {
+//						if (!ballDropped)
+//							DropBall ();
+//					}
+//				} else
+//			if (Input.GetMouseButtonDown (0)) {
+//					if ((!ballCaught)&(ballThrown)){
+//						CatchBall ();
+//					}
+//					else if (!ballDropped) {
+//						DropBall ();
+//					}
+//				}
+//			}
+//
+//		}
 		//print (ball.name);
 	}
 
 	void CatchBall(){
+		ballCaught = true;
 		ballThrown = false;
 		ballRB = ball.GetComponent<Rigidbody>();
 		ballRB.isKinematic = true;
-		ballCaught = true;
+
 
 		ballParentTransform = ball.transform.root;
 

@@ -54,7 +54,7 @@ public class GyroController : MonoBehaviour
 		GUILayout.Label("input.gyro.attitude: " + Input.gyro.attitude);
 		GUILayout.Label("transform.rotation: " + transform.rotation);
 
-		if (GUILayout.Button("Recalibrate: " + gyroEnabled, GUILayout.Height(100)))
+		if (GUILayout.Button("Recalibrate: " + gyroEnabled, GUILayout.Height(50)))
 		{
 			DetachGyro();
 			transform.rotation = Quaternion.identity;

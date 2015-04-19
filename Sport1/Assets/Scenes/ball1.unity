@@ -994,7 +994,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 598229364}
-  - 114: {fileID: 598229365}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1022,19 +1021,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4.30000019, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &598229365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 598229363}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0979a9441a66419086f01b94083c2be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothRate: 0
-  camParentRotOffset: {x: 90, y: 180, z: 0, w: 0}
 --- !u!1 &659399447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,8 +1033,6 @@ GameObject:
   - 124: {fileID: 659399452}
   - 92: {fileID: 659399451}
   - 81: {fileID: 659399450}
-  - 114: {fileID: 659399449}
-  - 114: {fileID: 659399454}
   - 114: {fileID: 659399455}
   m_Layer: 0
   m_Name: Camera
@@ -1071,24 +1055,6 @@ Transform:
   - {fileID: 1451401823}
   m_Father: {fileID: 598229364}
   m_RootOrder: 0
---- !u!114 &659399449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11473668, guid: 657f028276ae84919b0601feac37d549,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 659399447}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cadd54e4832aeef4b9359f44cbe335cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationRange: {x: 160, y: 160}
-  rotationSpeed: 100
-  dampingTime: .200000003
-  autoZeroVerticalOnMobile: 0
-  autoZeroHorizontalOnMobile: 0
-  relative: 0
 --- !u!81 &659399450
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1146,17 +1112,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
---- !u!114 &659399454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 659399447}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9ce4f74a6e33447e9c7c060ea6fefb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &659399455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1777,7 +1732,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   ballObject: RugbyBall
   prfb_kickBall: {fileID: 140098, guid: 674a4a7860cdb49b4a45be641df40741, type: 2}
-  debugCatch: 1
+  debugCatch: 0
   ballCaught: 0
   handsObject: CatchZone
   CatchRoation: {x: 0, y: 90, z: 105}
