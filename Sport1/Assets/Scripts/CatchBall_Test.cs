@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.llections;
+using System.Collections;
 
 public class CatchBall_Test : MonoBehaviour {
 

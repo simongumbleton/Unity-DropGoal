@@ -89,10 +89,10 @@ public class iPhoneGyroCam : MonoBehaviour {
 
 			Quaternion camRot = gyro.attitude * rotFix;
 			//print ("Gyro with fix = " + camRot);
-			offsetGyroRot = StartingGyroRotation * camRot;
+			offsetGyroRot = StartingRotation * camRot;
 			//print ("Inverse offset = " + offsetGyroRot);
 			//print ("Starting Gyro Rotation = " + StartingGyroRotation);
-			transform.localRotation = camRot;
+			transform.localRotation = offsetGyroRot;
 		
 			//lastCamRot = offsetGyroRot;
 
