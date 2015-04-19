@@ -54,42 +54,49 @@ public class GyroController : MonoBehaviour
 		GUILayout.Label("input.gyro.attitude: " + Input.gyro.attitude);
 		GUILayout.Label("transform.rotation: " + transform.rotation);
 
-		if (GUILayout.Button("On/off gyro: " + Input.gyro.enabled, GUILayout.Height(100)))
+		if (GUILayout.Button("Recalibrate: " + gyroEnabled, GUILayout.Height(100)))
 		{
-			Input.gyro.enabled = !Input.gyro.enabled;
-		}
-
-		if (GUILayout.Button("On/off gyro controller: " + gyroEnabled, GUILayout.Height(100)))
-		{
-			if (gyroEnabled)
-			{
-				DetachGyro();
-			}
-			else
-			{
-				AttachGyro();
-			}
-		}
-
-		if (GUILayout.Button("Update gyro calibration (Horizontal only)", GUILayout.Height(80)))
-		{
-			UpdateCalibration(true);
-		}
-
-		if (GUILayout.Button("Update camera base rotation (Horizontal only)", GUILayout.Height(80)))
-		{
-			UpdateCameraBaseRotation(true);
-		}
-
-		if (GUILayout.Button("Reset base orientation", GUILayout.Height(80)))
-		{
-			ResetBaseOrientation();
-		}
-
-		if (GUILayout.Button("Reset camera rotation", GUILayout.Height(80)))
-		{
+			DetachGyro();
 			transform.rotation = Quaternion.identity;
+			AttachGyro();
 		}
+
+//		if (GUILayout.Button("On/off gyro: " + Input.gyro.enabled, GUILayout.Height(100)))
+//		{
+//			Input.gyro.enabled = !Input.gyro.enabled;
+//		}
+//
+//		if (GUILayout.Button("On/off gyro controller: " + gyroEnabled, GUILayout.Height(100)))
+//		{
+//			if (gyroEnabled)
+//			{
+//				DetachGyro();
+//			}
+//			else
+//			{
+//				AttachGyro();
+//			}
+//		}
+//
+//		if (GUILayout.Button("Update gyro calibration (Horizontal only)", GUILayout.Height(80)))
+//		{
+//			UpdateCalibration(true);
+//		}
+//
+//		if (GUILayout.Button("Update camera base rotation (Horizontal only)", GUILayout.Height(80)))
+//		{
+//			UpdateCameraBaseRotation(true);
+//		}
+//
+//		if (GUILayout.Button("Reset base orientation", GUILayout.Height(80)))
+//		{
+//			ResetBaseOrientation();
+//		}
+//
+//		if (GUILayout.Button("Reset camera rotation", GUILayout.Height(80)))
+//		{
+//			transform.rotation = Quaternion.identity;
+//		}
 	}
 
 	#endregion
