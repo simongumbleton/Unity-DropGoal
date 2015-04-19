@@ -51,7 +51,7 @@ public class GyroController : MonoBehaviour
 			return;
 		transform.rotation = Quaternion.Slerp(transform.rotation,
 			cameraBase * ( ConvertRotation(referanceRotation * Input.gyro.attitude) * GetRotFix()), lowPassFilterFactor);
-		print (Input.gyro.attitude);
+		//print (Input.gyro.attitude);
 	}
 
 	protected void OnGUI()
