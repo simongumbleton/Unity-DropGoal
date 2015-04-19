@@ -26,13 +26,23 @@ public class GyroController : MonoBehaviour
 	private Quaternion referanceRotation = Quaternion.identity;
 	private bool debug = true;
 
+	private bool gyroBool;
+	private Gyroscope gyro;
+
+
 	#endregion
 
 	#region [Unity events]
 
 	protected void Start () 
 	{
-		AttachGyro();
+		gyroBool = Input.isGyroAvailable;
+		if (gyroBool) {
+			gyro = Input.gyro;
+			gyro.enabled = true;
+			AttachGyro();
+		}
+
 	}
 
 	protected void Update() 
@@ -41,6 +51,7 @@ public class GyroController : MonoBehaviour
 			return;
 		transform.rotation = Quaternion.Slerp(transform.rotation,
 			cameraBase * ( ConvertRotation(referanceRotation * Input.gyro.attitude) * GetRotFix()), lowPassFilterFactor);
+		print (Input.gyro.attitude);
 	}
 
 	protected void OnGUI()
