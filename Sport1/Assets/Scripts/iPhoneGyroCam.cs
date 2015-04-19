@@ -94,7 +94,7 @@ public class iPhoneGyroCam : MonoBehaviour {
 			//print ("Starting Gyro Rotation = " + StartingGyroRotation);
 			transform.localRotation = camRot;
 		
-			lastCamRot = offsetGyroRot;
+			//lastCamRot = offsetGyroRot;
 
 			//print(Quaternion.Dot(camRot, StartingGyroRotation));
 
@@ -124,6 +124,8 @@ public class iPhoneGyroCam : MonoBehaviour {
 		// Need to figure out the difference between how much the player has rotated from the starting position and apply that tranformed rotation to the camparent
 		//camParent.transform.eulerAngles = new Vector3(0,0,0);
 
+		//only works for the first calibration for some reason????????
+
 		EndRotation = transform.rotation;
 		Quaternion inverseEndRotation = Quaternion.Inverse (EndRotation);
 		Quaternion camParentInitial = Quaternion.identity;
@@ -131,9 +133,25 @@ public class iPhoneGyroCam : MonoBehaviour {
 		Quaternion calibratedCamParentRot = inverseEndRotation * camParentInitial;
 		camParent.transform.rotation = calibratedCamParentRot;
 
+		 
+		//resetParent ();
 
+		}
 
-
+	void resetParent()
+	{
+		/////  Try removing and re-paarenting the cam parent on re-calibration
+		transform.SetParent (null, true);
+		GameObject oldCamParent = camParent;
+		Destroy (oldCamParent);
+		//	Transform originalParent = transform.parent; // check if this transform has a parent
+		camParent = new GameObject ("camParent"); // make a new parent
+		camParent.transform.position = transform.position; // move the new parent to this transform position
+		//transform.parent = camParent.transform; // make this transform a child of the new parent
+		transform.SetParent (camParent.transform);
+		//camParent.transform.parent = originalParent; // make the new parent a child of the original parent
+		//	camParent.transform.SetParent (originalParent);
+		camParent.transform.eulerAngles = new Vector3(90,270,0);
 	}
 
 }
