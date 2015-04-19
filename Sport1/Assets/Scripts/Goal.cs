@@ -24,18 +24,15 @@ public class Goal : MonoBehaviour {
 
 
 	void OnBallKicked(){
-		if (ballObject != null) {
-			ball = GameObject.FindWithTag(ballObject);
-		}
+	//	if (ballObject != null) {
+		//	ball = GameObject.FindWithTag(ballObject);
+	//	}
 	}
 
 
 	void OnTriggerEnter(Collider other) {
-
-		////  Look at storing the kicked balls in an array 
-		if (ball != null) {
-			if (other.name == ball.name) 
-				ScoreGoal ();
+		if (other.tag == "KickedBall"){
+			ScoreGoal ();
 		}
 	}
 	
