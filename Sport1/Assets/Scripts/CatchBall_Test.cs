@@ -98,15 +98,17 @@ public class CatchBall_Test : MonoBehaviour {
 
 		if (scrumHalfAlive) {
 			if (canCatch) {
-				if (Input.GetMouseButton (0)) {
+				if (Input.GetMouseButtonDown (0)) {
 					if ((!ballCaught)&(ballThrown)){
 						CatchBall ();
 					}
 				}
-				else
-					if (ballCaught){
-						DropBall ();
-					}
+				if (ballCaught){
+					if (!Input.GetMouseButton (0))
+						{
+							DropBall ();
+						}
+				}
 
 			}
 			
