@@ -43,7 +43,7 @@ public class KickZone : MonoBehaviour {
 	private float kickPowerCatchOffset;
 	public float kickDirectionModifierAmount;
 
-
+	private SwipeDetector swipeScript;
 
 	// Use this for initialization
 	void Start () {
@@ -58,6 +58,7 @@ public class KickZone : MonoBehaviour {
 			catchScript = CatchBall.GetComponent<CatchBall_Test> ();
 		}
 
+		swipeScript = gameObject.GetComponent<SwipeDetector> ();
 		hasKicked = false;
 		maxKickPower = 900;
 	
@@ -87,6 +88,7 @@ public class KickZone : MonoBehaviour {
 
 		//kickCatchOffset = catchScript.TotalCatchOffset;
 		//print (kickCatchOffset);
+
 
 		float newkickPower = kickPower;
 
@@ -169,9 +171,12 @@ public class KickZone : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.name == ball.name) 
-		if (!hasKicked)
-				KickBall ();
-		
+		if (!hasKicked) {
+			print (swipeScript.swipeDistVertical);
+			print (swipeScript.swipeDistHorizontal);
+			print (swipeScript.swipetime);
+			KickBall ();
+		}
 	}
 
 
