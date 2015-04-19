@@ -13,12 +13,13 @@ public class SwipeDetector : MonoBehaviour
 
 	float startTime;
 	float endTime;
-	float swipetime;
+	public float swipetime;
 	float distance;
 
-	float swipeDistVertical;
-	float swipeDistHorizontal;
-	float swipeVertValue;
+	public float swipeDistVertical;
+	public float swipeDistHorizontal;
+
+	public float swipeVertValue;
 	float swipeHorizValue;
 	Vector2 deltaPos;
 	float deltaTime;
