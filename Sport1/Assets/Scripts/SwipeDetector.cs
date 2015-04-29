@@ -79,11 +79,12 @@ public class SwipeDetector : MonoBehaviour
 				deltaTime = Input.touches[0].deltaTime;
 				division = deltaPos / deltaTime;
 
-				swipeDistVertical = (new Vector3(0, touch.position.y, 0) - new Vector3(0, startPos.y, 0)).magnitude;
+			//	swipeDistVertical = (new Vector3(0, touch.position.y, 0) - new Vector3(0, startPos.y, 0)).magnitude;
+				swipeDistVertical = touch.position.y - startPos.y;
 
 
 				
-				if (swipeDistVertical > minSwipeDistY) 
+				if (Mathf.Abs(swipeDistVertical) > minSwipeDistY) 
 					
 				{
 					
@@ -99,9 +100,11 @@ public class SwipeDetector : MonoBehaviour
 							
 				}
 				
-				swipeDistHorizontal = (new Vector3(touch.position.x,0, 0) - new Vector3(startPos.x, 0, 0)).magnitude;
-				
-				if (swipeDistHorizontal > minSwipeDistX) 
+			//	swipeDistHorizontal = (new Vector3(touch.position.x,0, 0) - new Vector3(startPos.x, 0, 0)).magnitude;
+				swipeDistHorizontal = touch.position.x - startPos.x;
+
+
+				if (Mathf.Abs(swipeDistHorizontal) > minSwipeDistX) 
 					
 				{
 					
