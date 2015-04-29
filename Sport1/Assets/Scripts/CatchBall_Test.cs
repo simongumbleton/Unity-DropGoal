@@ -5,6 +5,7 @@ public class CatchBall_Test : MonoBehaviour {
 
 	public GameObject ball;
 	public string ballObject;
+	public Camera camera;
 
 
 	public GameObject prfb_kickBall;
@@ -37,6 +38,12 @@ public class CatchBall_Test : MonoBehaviour {
 	private bool scrumHalfAlive = false;
 
 	private Transform ballParentTransform;
+
+	private Vector2 touchStartPos;
+
+	private Vector3 ballCatchPos;
+
+	private Vector3 lastBallCatchPos;
 
 	public delegate void BallCaught();
 	public static event BallCaught onBallCaught;
@@ -108,46 +115,39 @@ public class CatchBall_Test : MonoBehaviour {
 						{
 							DropBall ();
 						}
+					else
+					{
+						updateTouchBallPosition ();
+					}
 				}
 
 			}
 			
 		}
+	}
+
+	void updateTouchBallPosition ()
+	{
+		Vector2 touchPositionOffset = Input.GetTouch (0).position - touchStartPos;
+		 // or some other distance, just don't leave it with 0f
+		print (touchPositionOffset * 0.005f);
+		touchPositionOffset = touchPositionOffset * 0.005f;
+
+		float tempx = Mathf.Clamp (touchPositionOffset.x, -1.0f, 1.0f);
+		float tempy = Mathf.Clamp (touchPositionOffset.y, -0.6f, 0.6f);
 
 
-//		if (Input.GetMouseButton (0)) {
-//			print ("Touching");
-//		}
-//		else {
-//			print ("Not Touching");
-//		}
 
+		tempx = ballCatchPos.x + (tempx);
+		tempy = ballCatchPos.y + (tempy);
 
+		tempx = Mathf.Lerp (lastBallCatchPos.x,tempx,0.15f);
+		tempy = Mathf.Lerp (lastBallCatchPos.y,tempy,0.15f);
 
-//		if (scrumHalfAlive) {
-//			if (canCatch) {
-//				if ((debugCatch) & (!debugBallCaught)) {
-//					if ((!ballCaught)&(ballThrown)) {
-//						CatchBall ();
-//						debugBallCaught = true;
-//					} else
-//				if (Input.GetMouseButtonDown (0)) {
-//						if (!ballDropped)
-//							DropBall ();
-//					}
-//				} else
-//			if (Input.GetMouseButtonDown (0)) {
-//					if ((!ballCaught)&(ballThrown)){
-//						CatchBall ();
-//					}
-//					else if (!ballDropped) {
-//						DropBall ();
-//					}
-//				}
-//			}
-//
-//		}
-		//print (ball.name);
+		ball.transform.localPosition = new Vector3(tempx,tempy , Catch_Z_Position);
+
+		lastBallCatchPos = ball.transform.localPosition;
+
 	}
 
 	void CatchBall(){
@@ -156,15 +156,19 @@ public class CatchBall_Test : MonoBehaviour {
 		ballRB = ball.GetComponent<Rigidbody>();
 		ballRB.isKinematic = true;
 
+		touchStartPos = Input.GetTouch (0).position;
+		//Ray ray = camera.ScreenPointToRay(Input.GetTouch(0).position);
+		//print (ray);
 
 		ballParentTransform = ball.transform.root;
 
 		ball.transform.parent = hands.transform;
 
 		ball.transform.localPosition = new Vector3(ball.transform.localPosition.x,ball.transform.localPosition.y , Catch_Z_Position);
-		CatchXOffset = (ball.transform.localPosition.x);
-		CatchYOffset = (ball.transform.localPosition.y);
-		TotalCatchOffset = Mathf.Abs(CatchXOffset) + Mathf.Abs(CatchYOffset);
+		ballCatchPos = ball.transform.localPosition;
+	//	CatchXOffset = (ball.transform.localPosition.x);
+	//	CatchYOffset = (ball.transform.localPosition.y);
+	//	TotalCatchOffset = Mathf.Abs(CatchXOffset) + Mathf.Abs(CatchYOffset);
 		//print (TotalCatchOffset);
 
 		ball.transform.localRotation = q_catchRot;
@@ -173,6 +177,11 @@ public class CatchBall_Test : MonoBehaviour {
 	}
 
 	void DropBall(){
+
+		CatchXOffset = (ball.transform.localPosition.x);
+		CatchYOffset = (ball.transform.localPosition.y);
+		TotalCatchOffset = Mathf.Abs(CatchXOffset) + Mathf.Abs(CatchYOffset);
+
 		ballDropped = true;
 		kickBallPos = ball.transform.position;
 		kickBallRot = ball.transform.rotation;
@@ -214,7 +223,8 @@ public class CatchBall_Test : MonoBehaviour {
 		//print (other.name);
 		if (ball != null)
 			if (other.name == ball.name) {
-				canCatch = false;
+				if (! ballCaught)
+					canCatch = false;
 			//print ("Can Not Catch");
 		}
 	}

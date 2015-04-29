@@ -27,6 +27,7 @@ public class GyroController : MonoBehaviour
 	private bool debug = true;
 
 	private bool gyroBool;
+	private bool gyroOn = false;
 	private Gyroscope gyro;
 
 
@@ -40,13 +41,28 @@ public class GyroController : MonoBehaviour
 		if (gyroBool) {
 			gyro = Input.gyro;
 			gyro.enabled = true;
+			gyroOn = true;
 			AttachGyro();
 		}
 
 	}
 
+	protected void recalibrate(){
+		DetachGyro();
+		transform.rotation = Quaternion.identity;
+		AttachGyro();
+	}
+
 	protected void Update() 
 	{
+		// Adding a check in update. Unity remote doesn't initialise gyro immediatley so this is a hack to get around it
+		gyroBool = Input.isGyroAvailable;
+
+		if ((gyroBool) && (!gyroOn)) {
+			Start ();
+		}
+
+
 		if (!gyroEnabled)
 			return;
 		transform.rotation = Quaternion.Slerp(transform.rotation,
@@ -67,9 +83,7 @@ public class GyroController : MonoBehaviour
 
 		if (GUILayout.Button("Recalibrate: " + gyroEnabled, GUILayout.Height(50)))
 		{
-			DetachGyro();
-			transform.rotation = Quaternion.identity;
-			AttachGyro();
+			recalibrate();
 		}
 
 //		if (GUILayout.Button("On/off gyro: " + Input.gyro.enabled, GUILayout.Height(100)))

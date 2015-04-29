@@ -1308,6 +1308,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSwipeDistY: 0
   minSwipeDistX: 0
+  swipetime: 0
+  swipeDistVertical: 0
+  swipeDistHorizontal: 0
+  swipeVertValue: 0
 --- !u!1 &760782803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   ballObject: RugbyBall
+  camera: {fileID: 659399453}
   prfb_kickBall: {fileID: 140098, guid: 674a4a7860cdb49b4a45be641df40741, type: 2}
   debugCatch: 0
   ballCaught: 0
