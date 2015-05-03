@@ -7,10 +7,10 @@ PhysicMaterial:
   m_PrefabInternal: {fileID: 0}
   m_Name: RugbyBall
   dynamicFriction: 1
-  staticFriction: 1
+  staticFriction: 111
   bounciness: .150000006
   frictionCombine: 0
-  bounceCombine: 0
+  bounceCombine: 3
   frictionDirection2: {x: 0, y: 0, z: 0}
   dynamicFriction2: 0
   staticFriction2: 0

@@ -41,8 +41,34 @@ public class SwipeDetector : MonoBehaviour
 
 		GUILayout.Label ("swipetime: " + swipetime);
 		GUILayout.Label ("distance: " + distance);
+		GUILayout.Label ("Velocity: = "+ (distance/swipetime));
+		GUILayout.Label ("Vertical Velocity: = "+ (swipeDistVertical/swipetime));
 		GUILayout.EndArea();
 	}
+
+
+//	public float GetVerticalSwipeDistance()
+//	{				
+//
+//
+//	}
+//
+//	public float GetHorizontalSwipeDistance()
+//	{				
+//		
+//		
+//	}
+
+	void ResetSwipeValues()
+	{
+		swipeDistVertical = 0.0f;
+		swipeVertValue = 0.0f;
+		swipeDistHorizontal = 0.0f;
+		swipeHorizValue = 0.0f;
+		swipetime = 0.0f;
+		distance = 0.0f;
+	}
+
 
 	void Update()
 	{
@@ -63,6 +89,7 @@ public class SwipeDetector : MonoBehaviour
 				
 				startPos = touch.position;
 				startTime = Time.time;
+				ResetSwipeValues();
 				
 				break;
 				
@@ -90,13 +117,13 @@ public class SwipeDetector : MonoBehaviour
 					
 					swipeVertValue = Mathf.Sign(touch.position.y - startPos.y);
 					
-					if (swipeVertValue > 0)//up swipe
+					//if (swipeVertValue > 0)//up swipe
 						
-						print ("Up Swipe");
+						//print ("Up Swipe");
 						
-					else if (swipeVertValue < 0)//down swipe
+					//else if (swipeVertValue < 0)//down swipe
 							
-						print ("Down Swipe");
+						//print ("Down Swipe");
 							
 				}
 				
@@ -110,13 +137,13 @@ public class SwipeDetector : MonoBehaviour
 					
 					swipeHorizValue = Mathf.Sign(touch.position.x - startPos.x);
 					
-					if (swipeHorizValue > 0)//right swipe
+					//if (swipeHorizValue > 0)//right swipe
 						
-						print ("Right Swipe");
+					//	print ("Right Swipe");
 						
-					else if (swipeHorizValue < 0)//left swipe
+					//else if (swipeHorizValue < 0)//left swipe
 							
-						print ("Left Swipe");
+					//	print ("Left Swipe");
 							
 				}
 				break;

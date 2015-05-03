@@ -828,7 +828,7 @@ SphereCollider:
   m_GameObject: {fileID: 465509181}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1279,9 +1279,12 @@ MonoBehaviour:
   kickVector: {x: 0, y: 0, z: 0}
   kickPower: 800
   kickHeight: .300000012
+  maxKickPower: 800
+  kickDirectionModifierAmount: .00100000005
+  kickPowerModifierAmount: .5
   catchBallObject: CatchZone
-  kickPowerModifierAmount: .300000012
-  kickDirectionModifierAmount: .5
+  catchPowerModifier: .300000012
+  catchDirectionModifier: .300000012
 --- !u!65 &739890093
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1424,7 +1427,7 @@ SphereCollider:
   m_GameObject: {fileID: 854659673}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1681,7 +1684,7 @@ SphereCollider:
   m_GameObject: {fileID: 1428124587}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1927,7 +1930,7 @@ SphereCollider:
   m_GameObject: {fileID: 1629727942}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}
@@ -2044,7 +2047,7 @@ SphereCollider:
   m_GameObject: {fileID: 1804263893}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: .5
   m_Center: {x: 0, y: 0, z: 0}

@@ -27,9 +27,17 @@ public class KickZone : MonoBehaviour {
 	public float kickHeight;
 	private bool hasKicked;
 	private Vector3 kickPosition;
-	private float maxKickPower;
+	public float maxKickPower;
 	private float kickCatchOffset;
 	private float kickDirectionXOffset;
+
+	private float swipeDistanceVert;
+	private float swipeDistanceHoriz;
+	private float swipeTime;
+
+	public float kickDirectionModifierAmount;
+	public float kickPowerModifierAmount;
+
 	//private CatchBall_Test catchScript;
 
 	public delegate void BallKicked();
@@ -39,9 +47,11 @@ public class KickZone : MonoBehaviour {
 	private GameObject CatchBall;
 	private CatchBall_Test catchScript;
 
-	public float kickPowerModifierAmount;
+
 	private float kickPowerCatchOffset;
-	public float kickDirectionModifierAmount;
+	public float catchPowerModifier = 0.3f;
+	public float catchDirectionModifier = 0.3f;
+
 
 	private SwipeDetector swipeScript;
 
@@ -60,7 +70,7 @@ public class KickZone : MonoBehaviour {
 
 		swipeScript = gameObject.GetComponent<SwipeDetector> ();
 		hasKicked = false;
-		maxKickPower = 900;
+
 	
 	}
 
@@ -90,9 +100,21 @@ public class KickZone : MonoBehaviour {
 		//print (kickCatchOffset);
 
 
-		float newkickPower = kickPower;
 
-		float kickPowerModifier = kickPower * kickPowerModifierAmount;
+		kickVector = playerCam.transform.forward + playerCam.transform.up;
+		kickVector.y += kickHeight;
+
+
+		///Swipe stuff here
+		kickPower = (swipeDistanceVert/swipeTime) * kickPowerModifierAmount;
+		kickPower = Mathf.Clamp (kickPower,0.0f,maxKickPower);
+
+		float kickHorizDirectionOffset = swipeDistanceHoriz * kickDirectionModifierAmount;
+		kickVector.x += kickHorizDirectionOffset;
+
+		///End Swipe stuff
+
+		float newkickPower = kickPower;
 		float kickDirectionModifier = 0;
 
 		if (CatchEffectsPower) {
@@ -105,12 +127,11 @@ public class KickZone : MonoBehaviour {
 				kickPowerCatchOffset = Mathf.Pow (kickPowerCatchOffset,2);
 			}
 
-			newkickPower = kickPower - (kickPowerCatchOffset * kickPowerModifier);
+			newkickPower = kickPower - (kickPowerCatchOffset * catchPowerModifier);
 
 		}
 
-		kickVector = playerCam.transform.forward + playerCam.transform.up;
-		kickVector.y += kickHeight;
+
 
 
 
@@ -134,7 +155,7 @@ public class KickZone : MonoBehaviour {
 			else
 				kickDirectionXOffset = tempKickDirectionOffset;
 
-			kickDirectionModifier = kickDirectionXOffset * kickDirectionModifierAmount;
+			kickDirectionModifier = kickDirectionXOffset * catchDirectionModifier;
 			kickVector.x += kickDirectionModifier;
 		}
 
@@ -145,7 +166,10 @@ public class KickZone : MonoBehaviour {
 
 		kickPosition = kickPoint.transform.position;
 		//ballRB.AddForce(kickVector * kickPower, ForceMode.Acceleration);
-		ballRB.AddForceAtPosition(kickVector * newkickPower,kickPosition, ForceMode.Acceleration);
+		print (newkickPower);
+		if (!float.IsNaN(newkickPower)){
+			ballRB.AddForceAtPosition(kickVector * newkickPower,kickPosition, ForceMode.Acceleration);
+		}
 		ballRB.tag = "KickedBall";
 		kickPoint.tag = "Untagged";
 
@@ -172,9 +196,14 @@ public class KickZone : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if (other.name == ball.name) 
 		if (!hasKicked) {
-			print (swipeScript.swipeDistVertical);
-			print (swipeScript.swipeDistHorizontal);
-			print (swipeScript.swipetime);
+			swipeDistanceVert = swipeScript.swipeDistVertical;
+			swipeDistanceHoriz = swipeScript.swipeDistHorizontal;
+			swipeTime = swipeScript.swipetime;
+
+
+			print ("Swipe Vert = "+swipeDistanceVert);
+			print ("Swipe Horiz = "+swipeDistanceHoriz);
+			print ("Swipe Time = "+swipeTime);
 			KickBall ();
 		}
 	}
