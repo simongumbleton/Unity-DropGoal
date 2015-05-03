@@ -141,8 +141,8 @@ public class CatchBall_Test : MonoBehaviour {
 		tempx = ballCatchPos.x + (tempx);
 		tempy = ballCatchPos.y + (tempy);
 
-		tempx = Mathf.Lerp (lastBallCatchPos.x,tempx,0.15f);
-		tempy = Mathf.Lerp (lastBallCatchPos.y,tempy,0.15f);
+		tempx = Mathf.Lerp (lastBallCatchPos.x,tempx,0.25f);
+		tempy = Mathf.Lerp (lastBallCatchPos.y,tempy,0.05f);
 
 		ball.transform.localPosition = new Vector3(tempx,tempy , Catch_Z_Position);
 

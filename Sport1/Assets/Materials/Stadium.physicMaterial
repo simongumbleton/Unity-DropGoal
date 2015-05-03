@@ -8,7 +8,7 @@ PhysicMaterial:
   m_Name: Stadium
   dynamicFriction: .600000024
   staticFriction: .600000024
-  bounciness: .0500000007
+  bounciness: .100000001
   frictionCombine: 0
   bounceCombine: 0
   frictionDirection2: {x: 0, y: 0, z: 0}
