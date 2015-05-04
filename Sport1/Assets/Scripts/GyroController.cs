@@ -30,6 +30,8 @@ public class GyroController : MonoBehaviour
 	private bool gyroOn = false;
 	private Gyroscope gyro;
 
+	public Transform playerRoot;
+
 
 	#endregion
 
@@ -45,11 +47,21 @@ public class GyroController : MonoBehaviour
 			AttachGyro();
 		}
 
+		PlayerPositionManager.onPlayerMoved += HandleonPlayerMoved;
+
+	}
+
+	void HandleonPlayerMoved ()
+	{
+		recalibrate();
 	}
 
 	protected void recalibrate(){
 		DetachGyro();
 		transform.rotation = Quaternion.identity;
+		print (playerRoot.transform.eulerAngles);
+		transform.eulerAngles = playerRoot.transform.eulerAngles;
+		print (transform.eulerAngles);
 		AttachGyro();
 	}
 

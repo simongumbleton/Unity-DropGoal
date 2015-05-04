@@ -16,6 +16,7 @@ public class PrefabSpawner : MonoBehaviour {
 	public delegate void SpawnedScrumHalf();
 	public static event SpawnedScrumHalf onScrumhalfSpawned;
 	public static event SpawnedScrumHalf onScrumhalfDestroyed;
+	public static event SpawnedScrumHalf onNewBall;
 
 	//Set up ref to the CatchZone
 	public string catchZoneObject = "CatchZone";
@@ -57,6 +58,28 @@ public class PrefabSpawner : MonoBehaviour {
 		timerText.text = "";
 
 	}
+
+	protected void OnGUI()
+	{
+
+		GUILayout.BeginArea (new Rect (400, 10, 400, 200));
+		
+		if (GUILayout.Button ("Throw Ball! ", GUILayout.Height (100))) {
+			if (canDestroy){
+				DestroyPrefabs ();
+				canDestroy = false;
+				Invoke ("SpawnPrefabs", 1);
+				print("SpawnPrefabs Triggered");
+				if (onNewBall != null) {
+					onNewBall ();
+				}
+			}
+		}
+
+		GUILayout.EndArea();
+
+	}
+
 
 	void HandleonBallThrown ()
 	{
@@ -126,13 +149,13 @@ public class PrefabSpawner : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetMouseButtonDown (1)) {
-			if (canDestroy){
-				DestroyPrefabs ();
-				canDestroy = false;
-				Invoke ("SpawnPrefabs", 1);
-				print("SpawnPrefabs Triggered");
+		//	if (canDestroy){
+		//		DestroyPrefabs ();
+		//		canDestroy = false;
+		//		Invoke ("SpawnPrefabs", 1);
+		//		print("SpawnPrefabs Triggered");
 
-			}
+		//	}
 		}
 		if (SnapTimer) {
 			timer += Time.deltaTime;
